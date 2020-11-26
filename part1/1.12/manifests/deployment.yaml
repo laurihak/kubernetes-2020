@@ -1,0 +1,24 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: project-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project
+  template:
+    metadata:
+      labels:
+        app: project
+    spec:
+      volumes:
+        - name: shared-image
+          persistentVolumeClaim:
+              claimName: project-claim
+      containers:
+        - name: project
+          image: laurihakala/project:47e7630d0c4c
+          volumeMounts:
+            - name: shared-image
+              mountPath: /usr/src/app/files

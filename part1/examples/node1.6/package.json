@@ -1,0 +1,26 @@
+{
+  "name": "node",
+  "version": "1.0.0",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "author": "laurihakala",
+  "license": "ISC",
+  "description": "hash-generator that consolo logs hash every 5 seconds with timestamp",
+  "dependencies": {
+    "crypto": "^1.0.1"
+  },
+  "devDependencies": {},
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/laurihak/hash-generator.git"
+  },
+  "keywords": [
+    "hash"
+  ],
+  "bugs": {
+    "url": "https://github.com/laurihak/hash-generator/issues"
+  },
+  "homepage": "https://github.com/laurihak/hash-generator#readme"
+}
