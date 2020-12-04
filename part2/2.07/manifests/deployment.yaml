@@ -1,0 +1,51 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: main
+  name: hashgenerator-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hashgenerator
+  template:
+    metadata:
+      labels:
+        app: hashgenerator
+    spec:
+      volumes: # Define volume
+        - name: shared-image
+          emptyDir: {}
+        - name: config
+          configMap:
+              name: project-configmap
+      containers:
+        - name: hash-reader
+          image: laurihakala/hash-reader:81d8de955275
+          resources:
+              limits:
+                memory: '128Mi'
+                cpu: '500m'
+          volumeMounts:
+            - name: shared-image
+              mountPath: /usr/src/app/files
+          env:
+            - name: MESSAGE
+              valueFrom: 
+                configMapRef:
+                  name: project-configmap
+                  key: MESSAGE
+            - name: POSGRES_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: db-key
+                  key: POSTGRES_PASSWORD
+        - name: hash-writer
+          image: laurihakala/hash-writer:f8048e5c4dc8
+          volumeMounts:
+            - name: shared-image
+              mountPath: /usr/src/app/files
+          resources:
+              limits:
+                memory: '128Mi'
+                cpu: '500m'

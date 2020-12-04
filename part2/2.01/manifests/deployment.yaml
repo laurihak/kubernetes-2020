@@ -1,0 +1,28 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: hashgenerator-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: hashgenerator
+  template:
+    metadata:
+      labels:
+        app: hashgenerator
+    spec:
+      volumes: # Define volume
+        - name: shared-image
+          emptyDir: {}
+      containers:
+        - name: hash-reader
+          image: laurihakala/hash-reader:81d8de955274
+          volumeMounts:
+            - name: shared-image
+              mountPath: /usr/src/app/files
+        - name: hash-writer
+          image: laurihakala/hash-writer:f8048e5c4dc8
+          volumeMounts:
+            - name: shared-image
+              mountPath: /usr/src/app/files

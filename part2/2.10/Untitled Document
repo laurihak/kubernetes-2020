@@ -1,0 +1,5 @@
+FROM alpine:3.10
+WORDKIR /app
+RUN apk add --no-cache --upgrade bash && apk add curl
+COPY . .
+CMD ["./script.sh"]

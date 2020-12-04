@@ -1,0 +1,27 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: project
+  name: project-backend-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-backend
+  template:
+    metadata:
+      labels:
+        app: project-backend
+    spec:
+      containers:
+        - name: project-backend
+          image: laurihakala/project-backend:47e7630d0c514
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
+          envFrom:
+              - configMapRef:
+                  name: postgres-configuration
+              - secretRef:
+                  name: db-key

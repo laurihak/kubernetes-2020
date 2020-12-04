@@ -1,0 +1,7 @@
+POST http://localhost:3001/todos 
+content-type: application/json
+
+{
+    "type": "todo",
+    "content": "Chill"
+}
