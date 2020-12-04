@@ -1,0 +1,22 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: project
+  name: project-frontend-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: project-frontend
+  template:
+    metadata:
+      labels:
+        app: project-frontend
+    spec:
+      containers:
+        - name: project-frontend
+          image: laurihakala/project-frontend:47e7630d0c50
+          resources:
+            limits:
+              memory: '128Mi'
+              cpu: '500m'
