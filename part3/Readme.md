@@ -16,7 +16,7 @@ PROS: \
 +You will save time \
 +Other developers may grasp db faster when its googles 
 
-CONS:
+CONS: \
 -Costs are higher if you can make good diy version of database \
 -You will not learn so much if you use cloud version \
 -In team projects there will be problems if only few are really good at databases \
