@@ -1,0 +1,23 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: main
+  name: pingpong-dep
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: pingpong
+  template:
+    metadata:
+      labels:
+        app: pingpong
+    spec:
+      containers:
+        - name: pingpong
+          image: laurihakala/pingpong:890b7df2cf44
+          envFrom:
+          - secretRef:
+              name: db-key
+          - configMapRef:
+              name: postgres-configuration
