@@ -1,7 +1,5 @@
-Frontend created with create-react-app 
+PART 3
 
-You need to have node/npm installed. \
-Install the dependencies with 'npm install' and then you can run it by 'npm start' 
 
 EXERCISE 3.06 
 
