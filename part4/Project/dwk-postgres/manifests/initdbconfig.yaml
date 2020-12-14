@@ -1,0 +1,10 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: project
+  name: postgres-initdb-config
+data:
+  createtables.sql: |
+    CREATE TABLE todos (id SERIAL, type TEXT, content TEXT, done BOOLEAN);
+    CREATE TABLE connection (id SERIAL, test TEXT);
+    INSERT INTO connection (test) VALUES ('test');

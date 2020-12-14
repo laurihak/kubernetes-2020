@@ -1,0 +1,18 @@
+apiVersion: batch/v1beta1
+kind: CronJob
+metadata:
+  name: todo
+  namespace: project
+spec:
+  schedule: "0 1 * * *"
+  jobTemplate:
+    spec:
+      template:
+        spec:  
+          containers:
+          - name: todo
+            image: PROJECTCHRON/IMAGE
+            env:
+              - name: URL
+                value: "https://en.wikipedia.org/wiki/Special:Random"
+          restartPolicy: OnFailure # This time we'll run it only once

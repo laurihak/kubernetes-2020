@@ -1,0 +1,9 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  namespace: main
+  name: postgres-initdb-config
+data:
+  initdb.sql: |
+    CREATE TABLE pongs (id INT AUTO_INCREMENT, pongs INT);
+    INSERT INTO pongs (pongs) VALUES (1)

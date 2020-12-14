@@ -1,0 +1,17 @@
+apiVersion: extensions/v1beta1
+kind: Ingress
+metadata:
+  namespace: project
+  name: project-material-ingress 
+spec:
+  rules:
+  - http:
+      paths:
+      - path: /
+        backend:
+          serviceName: project-frontend-svc
+          servicePort: 2345
+      - path: /api/
+        backend:
+          serviceName: project-backend-svc
+          servicePort: 2346

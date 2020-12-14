@@ -1,0 +1,39 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  namespace: project
+  name: project-backend-dep
+spec:
+  replicas: 4
+  selector:
+    matchLabels:
+      app: project-backend
+  template:
+    metadata:
+      labels:
+        app: project-backend
+    spec:
+      containers:
+        - name: project-backend
+          image: laurihakala/project-backend:415
+          envFrom:
+              - configMapRef:
+                  name: postgres-configuration
+              - secretRef:
+                  name: db-key
+          readinessProbe:
+            initialDelaySeconds: 10 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+               path: /api/healtz
+               port: 3001
+          livenessProbe:
+            initialDelaySeconds: 20 # Initial delay until the readiness is tested
+            periodSeconds: 5 # How often to test
+            httpGet:
+               path: /api/healtz
+               port: 3001
+          resources:
+            limits:
+              cpu: "150m"
+              memory: "100Mi"

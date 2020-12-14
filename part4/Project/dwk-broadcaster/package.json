@@ -1,0 +1,18 @@
+{
+  "name": "dwk-broadcaster",
+  "version": "1.0.0",
+  "description": "broadcasterNATS",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js",
+    "test": "test"
+  },
+  "author": "LH",
+  "license": "ISC",
+  "dependencies": {
+    "nats": "^1.4.12",
+    "os": "^0.1.1",
+    "telegraf": "^3.38.0",
+    "unique-names-generator": "^4.3.1"
+  }
+}
