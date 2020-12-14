@@ -20,9 +20,9 @@ spec:
             - name: NATS_URL
               value: nats://my-nats:4222
             - name: BOT_TOKEN
-              value: 1436026802:AAE39QaX20NhudnNmxiPt-UVH9dB3Imxqps
+              value: <YOUR_BOT_TOKEN>
             - name: CHAT_ID
-              value: "1402310547"
+              value: <YOUR_CHAT_ID>
           resources:
             limits:
               cpu: "150m"
